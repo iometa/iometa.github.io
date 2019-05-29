@@ -100,6 +100,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -514,11 +519,20 @@
 <li><code>npm install hexo-deployer-git --save</code></li>
 <li><code>npm install hexo-material</code></li>
 <li><code>cp node_modules/hexo-material themes/material</code></li>
-<li><p>修改博客根目录下的<code>_config.yml</code>中的以下项：</p>
- <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">JustSong</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Song</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">material</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/songwonderful/songwonderful.github.io</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<li>修改博客根目录下的<code>_config.yml</code>中的以下项：<pre><code class="yml"> title: JustSong
+ author: Song
+ language: en
+ theme: material
+ deploy:
+   type: git
+   repository: https://github.com/songwonderful/songwonderful.github.io
+   branch: master
+</code></pre>
 </li>
-<li><p>重命名<code>themes/material</code>下的<code>_config.template.yml</code>为<code>_config.yml</code>并修改以下项：</p>
- <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">slogan:</span> <span class="string">"尽人事，听天命"</span></span><br><span class="line"><span class="attr">github:</span> <span class="attr">https://github.com/songwonderful</span></span><br><span class="line"><span class="attr">zhihu:</span> <span class="attr">https://www.zhihu.com/people/songwonderful/</span></span><br></pre></td></tr></table></figure>
+<li>重命名<code>themes/material</code>下的<code>_config.template.yml</code>为<code>_config.yml</code>并修改以下项：<pre><code class="yml"> slogan: &quot;尽人事，听天命&quot;
+ github: https://github.com/songwonderful
+ zhihu: https://www.zhihu.com/people/songwonderful/
+</code></pre>
 </li>
 </ol>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
@@ -953,6 +967,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -963,6 +983,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

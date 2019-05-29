@@ -100,6 +100,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -502,17 +507,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h3 id="第一步：安装nginx"><a href="#第一步：安装nginx" class="headerlink" title="第一步：安装nginx"></a>第一步：安装nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+        <h3 id="第一步：安装nginx"><a href="#第一步：安装nginx" class="headerlink" title="第一步：安装nginx"></a>第一步：安装nginx</h3><pre><code class="bash">sudo apt-get update
+sudo apt-get install nginx
+</code></pre>
 <p>如果遇到依赖问题，尝试执行<code>sudo apt-get -f install</code>命令</p>
 <h3 id="第二步：配置nginx"><a href="#第二步：配置nginx" class="headerlink" title="第二步：配置nginx"></a>第二步：配置nginx</h3><ol>
 <li>首先备份原先的配置文件：<code>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup</code></li>
-<li><p>修改配置文件：<br> 如果你熟悉vi的使用：</p>
-<ul>
+<li>修改配置文件：<br> 如果你熟悉vi的使用：<ul>
 <li>使用vi打开配置文件：<code>/etc/nginx/sites-available/default</code></li>
-<li><p>修改其中的<code>location /</code>配置如下：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    proxy_pass http://localhost:3000;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">    proxy_set_header Connection &apos;upgrade&apos;;</span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_cache_bypass $http_upgrade;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果你不熟悉：</p>
-<ul>
+<li>修改其中的<code>location /</code>配置如下：<pre><code class="conf">  location / {
+      proxy_pass http://localhost:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection &#39;upgrade&#39;;
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+</code></pre>
+如果你不熟悉：<ul>
 <li>使用scp将配置文件拷到本地：<code>scp username@ip_address:/etc/nginx/sites-available/default ./</code><strong>（在本地计算机上执行）</strong></li>
 <li>进行修改，保存</li>
 <li>使用scp将修改后的配置文件传输到服务器：<code>scp ./default username@ip_address:/home/username</code><strong>（在本地计算机上执行）</strong></li>
@@ -524,22 +536,22 @@
 </li>
 </ul>
 </li>
-<li><p>测试配置文件：<code>sudo nginx -t</code><br>出现以下输出则OK，否则请根据报错检查自己的配置文件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启nginx服务：<code>sudo service nginx restart</code></p>
-<h3 id="第三步：安装npm和nodejs"><a href="#第三步：安装npm和nodejs" class="headerlink" title="第三步：安装npm和nodejs"></a>第三步：安装npm和nodejs</h3><p>直接使用<code>sudo apt install</code>进行安装的话，版本比较低，因此这里在官网下载进行安装.</p>
-</li>
+<li>测试配置文件：<code>sudo nginx -t</code><br>出现以下输出则OK，否则请根据报错检查自己的配置文件<pre><code> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+ nginx: configuration file /etc/nginx/nginx.conf test is successful
+</code></pre></li>
+<li>重启nginx服务：<code>sudo service nginx restart</code><h3 id="第三步：安装npm和nodejs"><a href="#第三步：安装npm和nodejs" class="headerlink" title="第三步：安装npm和nodejs"></a>第三步：安装npm和nodejs</h3>直接使用<code>sudo apt install</code>进行安装的话，版本比较低，因此这里在官网下载进行安装.</li>
 <li>使用wget进行下载：<code>wegt https://nodejs.org/dist/v12.1.0/node-v12.1.0-linux-x64.tar.xz</code></li>
 <li>解压缩：<code>tar xf node-v12.1.0-linux-x64.tar.xz</code></li>
-<li><p>创建指向我们所下的版本的nodejs的软链接：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/node</span><br><span class="line">sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/npm /usr/bin/npm</span><br><span class="line">sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/nodejs</span><br></pre></td></tr></table></figure>
+<li>创建指向我们所下的版本的nodejs的软链接：<pre><code class="bash"> sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/node
+ sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/npm /usr/bin/npm
+ sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/nodejs
+</code></pre>
 </li>
-<li><p>测试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">node -v</span><br><span class="line">nodejs -v</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="第四步：部署服务"><a href="#第四步：部署服务" class="headerlink" title="第四步：部署服务"></a>第四步：部署服务</h3><ol>
+<li>测试：<pre><code class="bash">npm -v
+node -v
+nodejs -v
+</code></pre>
+<h3 id="第四步：部署服务"><a href="#第四步：部署服务" class="headerlink" title="第四步：部署服务"></a>第四步：部署服务</h3></li>
 <li>安装进程守护工具pm2：<code>npm install -g pm2</code></li>
 <li>从Github把项目clone下来：<code>git clone https://github.com/songwonderful/practice-nodejs.git</code></li>
 <li>进入项目目录：<code>cd practice-nodejs</code></li>
@@ -547,8 +559,12 @@
 <li>使用pm2启动服务：<code>pm2 start ./bin/www</code></li>
 </ol>
 <p>注意：以上以我自己的一个项目为例，请根据你的具体情况修改相应的参数</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>此教程所用软件版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu 16.04.6 LTS</span><br><span class="line">nginx version: nginx/1.10.3 (Ubuntu)</span><br><span class="line">npm -v : 6.9.0</span><br><span class="line">nodejs -v : v10.15.3</span><br></pre></td></tr></table></figure></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>此教程所用软件版本：</p>
+<pre><code>Ubuntu 16.04.6 LTS
+nginx version: nginx/1.10.3 (Ubuntu)
+npm -v : 6.9.0
+nodejs -v : v10.15.3
+</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://www.imooc.com/article/31410" target="_blank" rel="noopener">https://www.imooc.com/article/31410</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04</a></li>
 <li><a href="https://www.cyberciti.biz/faq/nginx-linux-restart/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/nginx-linux-restart/</a></li>
@@ -974,6 +990,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -984,6 +1006,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
