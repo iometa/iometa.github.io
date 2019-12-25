@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Git 入门教程与基本配置 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Git 入门教程与基本配置</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本操作"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+  <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><pre><code class="bash"># 配置身份
+git config --global user.name &quot;用户名&quot;
+git config --global user.email &quot;邮箱地址&quot;
+# 创建代码仓库(首先要进入项目的根目录)
+git init
+# 添加文件(添加要提交的文件)
+git add filename # 添加单个文件
+git add . # 添加目录下的所有文件
+# 提交文件(提交代码到代码仓库)
+git commit -m &quot;commit message here&quot;
+# 查看修改的部分(代码提交后,本地又发生更改)
+git status # 显示被修改的文件
+git diff # 显示被修改的文件的具体被修改的内容
+# 显示历史提交信息
+git log
+# 撤销未添加文件的更改
+git checkout **/**/**.**
+# 取消添加文件
+git reset HEAD **/**/**.**
+# 回退到上一个版本
+git reset --hard HEAD
+git reset --hard HEAD^
+# 回退或恢复到指定版本
+git reset --hard version_number
+# 查询所有的历史版本更改信息
+git reflog
+# clone project
+git clone ***
+# tag a important version
+git tag -a v1.0 version_number
+# show tags
+git tag
+# add remote repository. Note: add a new repository on github first
+git remote add shortname git@github.com:github_username/project_name.git
+# config verification information
+ssh-keygen -t rsa -C &quot;Your github account email&quot;
+# test 
+ssh -T git@github.com
+# view the remote library
+git remote -v
+# fetch changes from remote library
+git fetch
+# merge changes
+git merge
+# 将本地更改推送到远程服务器上
+git push
+# some basic setting 
+git branch --set-upstream-to=origin/master master
+</code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.runoob.com/w3cnote/android-tutorial-git-repo-operate.html" target="_blank" rel="noopener">http://www.runoob.com/w3cnote/android-tutorial-git-repo-operate.html</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/</a></li>
+</ul>
+
+</article>
+<div id="comment">
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = "https://iometa.cn/2019/12/25/Git 入门教程与基本配置/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ck4l0uy9x0005d8j1x9qziku6"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://iometa.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

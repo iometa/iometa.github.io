@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nginx 安装与配置教程 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Nginx 安装与配置教程</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-在-Ubuntu-下的安装"><span class="toc-text">Nginx 在 Ubuntu 下的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSL-证书申请"><span class="toc-text">SSL 证书申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-在-Ubuntu-16-04-下的配置概述"><span class="toc-text">Nginx 在 Ubuntu 16.04 下的配置概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-在-Windows-10-下的配置"><span class="toc-text">Nginx 在 Windows 10 下的配置</span></a></li></ol>
+  </div>
+  <h2 id="Nginx-在-Ubuntu-下的安装"><a href="#Nginx-在-Ubuntu-下的安装" class="headerlink" title="Nginx 在 Ubuntu 下的安装"></a>Nginx 在 Ubuntu 下的安装</h2><pre><code class="shell">sudo apt-get update
+sudo apt-get install nginx
+</code></pre>
+<p>如果遇到依赖问题，尝试执行 <code>sudo apt-get -f install</code> 命令进行修复</p>
+<h2 id="SSL-证书申请"><a href="#SSL-证书申请" class="headerlink" title="SSL 证书申请"></a>SSL 证书申请</h2><p>我们需要为我们的域名以及子域名分别申请 SSL 证书，如过你用的是腾讯云服务器，可以点击此处<a href="https://console.cloud.tencent.com/ssl" target="_blank" rel="noopener">进行申请</a>，此处申请的免费 SSL 证书为单域名 SSL 证书，也就是说其只能用于一个域名，该域名下的子域名无法使用此证书，需另外申请。</p>
+<p>申请完之后，等待申请通过，之后下载证书文件，解压缩，把里面对应于 Nginx 证书文件和私钥文件通过 scp 或者其他工具传到服务器的 <code>/etc/nginx/</code> 目录</p>
+<h2 id="Nginx-在-Ubuntu-16-04-下的配置概述"><a href="#Nginx-在-Ubuntu-16-04-下的配置概述" class="headerlink" title="Nginx 在 Ubuntu 16.04 下的配置概述"></a>Nginx 在 Ubuntu 16.04 下的配置概述</h2><ol>
+<li>我们只需要更改位于 <code>/etc/nginx/sites-enabled/</code> 的 default 文件，首先对其进行备份 <code>sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.backup</code></li>
+<li>修改配置文件 <code>/etc/nginx/sites-enabled/default</code>，可以直接使用 vi 编辑器，也可以使用 Visual Studio Code 的 Remote Explorer 功能，远程打开位于服务器上的文件，特别方便</li>
+<li>参照以下代码进行修改</li>
+</ol>
+<pre><code>server { # 配置 http 自动跳转 https
+    listen 80;
+    server_name _;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443;
+    server_name iamazing.cn www.iamazing.cn;  # 你的域名
+    if ($host != &#39;iamazing.cn&#39; ) {
+        rewrite ^/(.*)$ https://iamazing.cn/$1 permanent; # www.iamazing.cn 永久跳转 iamazing.cn
+    }
+    ssl on;
+        ssl_certificate 1_iamazing.cn_bundle.crt;  # 对于此域名的证书文件
+        ssl_certificate_key 2_iamazing.cn.key;  # 对于此域名的的私钥
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass http://localhost:3000;  # 监听的地址
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &#39;upgrade&#39;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    location /public {
+        root /var/www/html;
+    }
+}
+
+server {
+    listen 443;
+    server_name bookmark.iamazing.cn;  # 你的子域名
+    ssl on;
+        ssl_certificate 1_bookmark.iamazing.cn_bundle.crt;  # 对于此域名的证书文件
+        ssl_certificate_key 2_bookmark.iamazing.cn.key;  # 对于此域名的的私钥
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass http://localhost:4000;  # 监听的地址
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &#39;upgrade&#39;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+</code></pre><ol>
+<li>验证配置是否正确：<code>sudo nginx -t</code>，如果没有报错，则重启 Nginx 服务：<code>sudo service nginx restart</code></li>
+</ol>
+<h2 id="Nginx-在-Windows-10-下的配置"><a href="#Nginx-在-Windows-10-下的配置" class="headerlink" title="Nginx 在 Windows 10 下的配置"></a>Nginx 在 Windows 10 下的配置</h2><ol>
+<li>在此处下载：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a></li>
+<li>安装</li>
+<li>备份配置文件，其位于 Nginx 根目录下的 conf 文件夹内，例如 <code>D:\Others\nginx-1.14.2\conf\nginx.conf</code></li>
+<li>申请 SSL 证书，并将证书文件和私钥文件放到 <code>D:\Others\nginx-1.14.2\conf\</code> 文件夹内</li>
+<li>对配置文件进行如下修改</li>
+</ol>
+<pre><code>worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    client_max_body_size 200M;
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    gzip  on;
+
+    server { # 配置 http 自动跳转 https
+        listen 80;
+        server_name _;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443;
+        server_name i.iamazing.cn localhost;
+        ssl on;
+            ssl_certificate 1_i.iamazing.cn_bundle.crt;  # 对于此域名的证书文件
+            ssl_certificate_key 2_i.iamazing.cn.key;  # 对于此域名的的私钥
+            ssl_session_timeout 5m;
+            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+            ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+            ssl_prefer_server_ciphers on;
+
+        location / {
+            root d:/project/public; # 可以将一些 HTML 文件放到这个文件夹内
+        }
+    }
+}
+</code></pre><ol start="6">
+<li>测试配置文件的正确性，在终端中打开 Nginx 的根目录，执行 <code>./nginx -T</code>，无误后启动 Nginx：<code>start nginx</code></li>
+<li>常用命令</li>
+</ol>
+<pre><code class="shell">start nginx # 启动 nginx
+nginx -s quit # 终止 nginx
+nginx -s reload # 重启 nginx
+nginx -v # 查看版本
+</code></pre>
+<ol start="8">
+<li>将 Nginx 配置为一项服务，这样它将开机自动启动，<a href="https://stackoverflow.com/questions/10061191/add-nginx-exe-as-windows-system-service-like-apache" target="_blank" rel="noopener">参考此处</a></li>
+</ol>
+
+</article>
+<div id="comment">
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = "https://iometa.cn/2019/12/25/Nginx 安装与配置教程/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ck4l0uy9y0006d8j12rb7u4uw"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://iometa.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

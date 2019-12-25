@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ubuntu 16.04 下配置 Nginx 与 Node.js 以及服务的部署 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Ubuntu 16.04 下配置 Nginx 与 Node.js 以及服务的部署</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装nginx"><span class="toc-text">第一步：安装nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置nginx"><span class="toc-text">第二步：配置nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：安装npm和nodejs"><span class="toc-text">第三步：安装npm和nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：部署服务"><span class="toc-text">第四步：部署服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+  <h2 id="第一步：安装nginx"><a href="#第一步：安装nginx" class="headerlink" title="第一步：安装nginx"></a>第一步：安装nginx</h2><pre><code class="bash">sudo apt-get update
+sudo apt-get install nginx
+</code></pre>
+<p>如果遇到依赖问题，尝试执行<code>sudo apt-get -f install</code>命令</p>
+<h2 id="第二步：配置nginx"><a href="#第二步：配置nginx" class="headerlink" title="第二步：配置nginx"></a>第二步：配置nginx</h2><ol>
+<li>首先备份原先的配置文件：<code>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup</code></li>
+<li>修改配置文件：<br> 如果你熟悉vi的使用：<ul>
+<li>使用vi打开配置文件：<code>/etc/nginx/sites-available/default</code></li>
+<li>修改其中的<code>location /</code>配置如下：<pre><code class="conf">  location / {
+      proxy_pass http://localhost:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection &#39;upgrade&#39;;
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+</code></pre>
+如果你不熟悉：<ul>
+<li>使用scp将配置文件拷到本地：<code>scp username@ip_address:/etc/nginx/sites-available/default ./</code><strong>（在本地计算机上执行）</strong></li>
+<li>进行修改，保存</li>
+<li>使用scp将修改后的配置文件传输到服务器：<code>scp ./default username@ip_address:/home/username</code><strong>（在本地计算机上执行）</strong></li>
+<li>将修改后的配置文件放到指定目录：<code>sudo cp /home/username/default /etc/nginx/sites-available/default</code><strong>（在服务器上执行）</strong></li>
+<li>注意事项：</li>
+<li>注意修改username和ip_address</li>
+<li>scp使用前需要配置ssh</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>测试配置文件：<code>sudo nginx -t</code><br> 出现以下输出则OK，否则请根据报错检查自己的配置文件<pre><code> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+ nginx: configuration file /etc/nginx/nginx.conf test is successful
+</code></pre></li>
+<li>重启nginx服务：<code>sudo service nginx restart</code></li>
+</ol>
+<h2 id="第三步：安装npm和nodejs"><a href="#第三步：安装npm和nodejs" class="headerlink" title="第三步：安装npm和nodejs"></a>第三步：安装npm和nodejs</h2><p>直接使用<code>sudo apt install</code>进行安装的话，版本比较低，因此这里在官网下载进行安装.</p>
+<ol>
+<li>使用wget进行下载：<code>wegt https://nodejs.org/dist/v12.1.0/node-v12.1.0-linux-x64.tar.xz</code></li>
+<li>解压缩：<code>tar xf node-v12.1.0-linux-x64.tar.xz</code></li>
+<li>创建指向我们所下的版本的nodejs的软链接：<pre><code class="bash"> sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/node
+ sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/npm /usr/bin/npm
+ sudo ln -s /home/ubuntu/node-v12.1.0-linux-x64/bin/node /usr/bin/nodejs
+</code></pre>
+</li>
+<li>测试：<pre><code class="bash">npm -v
+node -v
+nodejs -v
+</code></pre>
+</li>
+</ol>
+<h2 id="第四步：部署服务"><a href="#第四步：部署服务" class="headerlink" title="第四步：部署服务"></a>第四步：部署服务</h2><ol>
+<li>安装进程守护工具pm2：<code>npm install -g pm2</code></li>
+<li>从Github把项目clone下来：<code>git clone https://github.com/songwonderful/practice-nodejs.git</code></li>
+<li>进入项目目录：<code>cd practice-nodejs</code></li>
+<li>安装依赖库：<code>npm install</code></li>
+<li>使用pm2启动服务：<code>pm2 start ./bin/www</code></li>
+</ol>
+<p>注意：以上以我自己的一个项目为例，请根据你的具体情况修改相应的参数</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>此教程所用软件版本：</p>
+<pre><code>Ubuntu 16.04.6 LTS
+nginx version: nginx/1.10.3 (Ubuntu)
+npm -v : 6.9.0
+nodejs -v : v10.15.3
+</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.imooc.com/article/31410" target="_blank" rel="noopener">https://www.imooc.com/article/31410</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04</a></li>
+<li><a href="https://www.cyberciti.biz/faq/nginx-linux-restart/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/nginx-linux-restart/</a></li>
+</ul>
+
+</article>
+<div id="comment">
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = "https://iometa.cn/2019/12/25/Ubuntu 16.04 下配置 Nginx与 Node.js 以及服务的部署/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ck4l0uya20009d8j1zm3ynq2q"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://iometa.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenGL 环境搭建与教程推荐 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>OpenGL 环境搭建与教程推荐</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenGL-概述"><span class="toc-text">OpenGL 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GLFW-Graphics-Library-Framework"><span class="toc-text">GLFW (Graphics Library Framework)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行-OpenGL-程序"><span class="toc-text">运行 OpenGL 程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#教程推荐"><span class="toc-text">教程推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PS-Visual-Studio-2019-Glut-3-7-极简配置教程"><span class="toc-text">PS. Visual Studio 2019 + Glut 3.7 极简配置教程</span></a></li></ol>
+  </div>
+  <h2 id="OpenGL-概述"><a href="#OpenGL-概述" class="headerlink" title="OpenGL 概述"></a>OpenGL 概述</h2><p>摘自 Wikipedia：</p>
+<blockquote>
+<p>Open Graphics Library (OpenGL) is a cross-language, cross-platform <strong>application programming interface</strong> (API) for rendering 2D and 3D vector graphics. The API is typically used to interact with a graphics processing unit (GPU), to achieve <strong>hardware-accelerated rendering</strong>.</p>
+</blockquote>
+<p>总的来说，OpenGL 就是一个应用程序接口（API），用来帮助我们与GPU交互，来使用硬件加速渲染图形。OpenGL只是一个规范，不同的显卡厂商有不同的实现，但这无关紧要，只要用起来相同就行了。值得一提的是，OpenGL 是无需下载的，系统里已经有这个库了（opengl32.lib, opengl64.lib for Windows）。如果你已经很久没更新显卡驱动，我建议你去更新至最新的稳定版。</p>
+<blockquote>
+<p>In all three major desktop platforms (Linux, macOS, and Windows), OpenGL more or less comes with the system.</p>
+</blockquote>
+<p><strong>但是，只有 OpenGL 是不够的，原因大致有二：</strong></p>
+<ol>
+<li>OpenGL 本身提供的 API 比较底层，不便于使用，我们需要一个更高层次的封装。</li>
+<li>OpenGL 并没有提供创建 context，管理窗口以及处理用户输入等机制。</li>
+</ol>
+<p><strong>GLFW 就是我们所需要的所谓的“更高层次的封装”，下面将介绍其配置。</strong></p>
+<h2 id="GLFW-Graphics-Library-Framework"><a href="#GLFW-Graphics-Library-Framework" class="headerlink" title="GLFW (Graphics Library Framework)"></a>GLFW (Graphics Library Framework)</h2><p>摘自 Wikipedia：</p>
+<blockquote>
+<p>GLFW is a lightweight utility library for use with OpenGL. GLFW stands for Graphics Library Framework. It provides programmers with the ability to create and manage windows and OpenGL contexts, as well as handle joystick, keyboard and mouse input.</p>
+</blockquote>
+<p>如你所见，GLFW 是一个图形库框架。当然我们也有其他选择，但这个教程多一些，遇到问题好解决 O(∩_∩)O。</p>
+<p>废话不多说，我们去官网下载当前的最新稳定版 3.3 <a href="https://www.glfw.org/download.html" target="_blank" rel="noopener">https://www.glfw.org/download.html</a> ，选择 <strong>32-bit Windows binaries</strong>，我们这里就直接下别人编译好的，不再自行从源码编译了。如果你选择了64-bit 的二进制包，请注意你将来的程序将不能在 32 位的系统上运行。</p>
+<h2 id="运行-OpenGL-程序"><a href="#运行-OpenGL-程序" class="headerlink" title="运行 OpenGL 程序"></a>运行 OpenGL 程序</h2><ol>
+<li>使用Visual Studio 创建好一个C++空项目</li>
+<li>解压缩你刚刚下载好的压缩包，<strong>根据你的Visual Studio 的版本</strong>，选择对应的 lib 文件夹，将 lib文件夹和 include 文件夹复制到你刚创建好的项目的根目录。记得将lib-vc2019 重命名为lib（我这里是 Visual Studio 2019，所以是 lib-vc2019）。</li>
+</ol>
+<p>如图:</p>
+<p><img src="https://i.loli.net/2019/10/06/l2AZHP4X8nvwxfo.png" alt="image.png"></p>
+<ol start="3">
+<li>打开Project的属性页面，注意不是Solution的属性页面</li>
+</ol>
+<p>注意，这里有一个坑，我们需要<strong>先在项目中添加一个C++文件</strong>，空的就行，不然下图中你是找不到C/C++选项的。</p>
+<p><strong>添加 include 文件夹；注意选择 All Configuration 和 All Platforms</strong></p>
+<p><img src="https://i.loli.net/2019/10/06/IBc4eFXl1RnCabh.png" alt="image.png"></p>
+<p><strong>添加 lib 文件夹</strong></p>
+<p><img src="https://i.loli.net/2019/10/06/Oq8wyUdNQ3EkbZv.png" alt="image.png"><br><img src="https://i.loli.net/2019/10/06/F1CcEmKgJAs3puh.png" alt="image.png"></p>
+<ol start="4">
+<li>测试是否成功，将以下代码复制进你的项目：</li>
+</ol>
+<pre><code class="C++">#include &lt;GLFW/glfw3.h&gt;
+
+int main(void)
+{
+    GLFWwindow* window;
+
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(640, 480, &quot;Hello World&quot;, NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    /* Make the window&#39;s context current */
+    glfwMakeContextCurrent(window);
+
+    /* Loop until the user closes the window */
+    while (!glfwWindowShouldClose(window))
+    {
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        /* Swap front and back buffers */
+        glfwSwapBuffers(window);
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+    return 0;
+}
+</code></pre>
+<p>程序成功运行的界面<br><img src="https://i.loli.net/2019/10/06/gA1eNpWrv7iQJLS.png" alt="image.png"></p>
+<h2 id="教程推荐"><a href="#教程推荐" class="headerlink" title="教程推荐"></a>教程推荐</h2><ol>
+<li><a href="http://www.opengl-tutorial.org/" target="_blank" rel="noopener">http://www.opengl-tutorial.org/</a></li>
+<li><a href="https://learnopengl.com/" target="_blank" rel="noopener">https://learnopengl.com/</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//sgar91.files.wordpress.com/2010/12/opengl-programming-guide-7e.pdf" target="_blank" rel="noopener">OpenGL 红宝书 下载链接</a></li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>以上配置方法在 <code>Windows 10 + Visual Studio 2019 + GLFW 3.3</code> 环境下测试通过。</li>
+<li>如果谬误，还请指正</li>
+</ol>
+<hr>
+<h2 id="PS-Visual-Studio-2019-Glut-3-7-极简配置教程"><a href="#PS-Visual-Studio-2019-Glut-3-7-极简配置教程" class="headerlink" title="PS. Visual Studio 2019 + Glut 3.7 极简配置教程"></a>PS. Visual Studio 2019 + Glut 3.7 极简配置教程</h2><ol>
+<li>下载以下文件，如果你懒得找，可以使用<a href="https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1gbu6Odfb-jXwTcSNAaUkAQ" target="_blank" rel="noopener">此处已准备好了的文件</a>，不过我还是推荐你自己去官网下载。</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/06/uSHfjeCr5dVPnAE.png" alt="image.png"></p>
+<ol start="2">
+<li>将glut.h文件复制进Visual Studio的include目录下的gl文件夹内，注意需要自己创建gl文件夹。参考路径：<br><code>D:\Others\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include</code></li>
+<li>将glut.lib 和glut32.lib 文件复制进Visual Studio的lib目录下的x86文件夹内。参考路径：<br><code>D:\Others\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\lib\x86</code></li>
+<li>将glut32.dll 文件复制进以下目录：<br><code>C:\Windows\SysWOW64</code></li>
+<li>打开 Visual Studio，创建一个空项目，在 Solution Explorer中 对项目名右键，选择 Manage NuGet Packages，点击浏览搜索 nupengl，下载以下两个包即可：</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/06/axv3dOQ7sFTJuoD.png" alt="image.png"></p>
+<ol start="6">
+<li>使用以下代码检验你的配置是否成功：</li>
+</ol>
+<pre><code class="C++">#include &lt;Windows.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;GL/glut.h&gt;
+
+int main(int argc, char** argv)
+{
+    glutInit(&amp;argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(300, 300);
+    glutCreateWindow(&quot;OpenGL&quot;);
+    printf(&quot;OpenGL version: %s\n&quot;, glGetString(GL_VERSION));
+    return 0;
+}
+</code></pre>
+<ol start="7">
+<li>参考 / 阅读更多：</li>
+</ol>
+<ul>
+<li><a href="https://www.cnblogs.com/flylinmu/p/7823019.html" target="_blank" rel="noopener">https://www.cnblogs.com/flylinmu/p/7823019.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/NuGet" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/NuGet</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//docs.microsoft.com/en-us/nuget/what-is-nuget" target="_blank" rel="noopener">https://link.zhihu.com/?target=https%3A//docs.microsoft.com/en-us/nuget/what-is-nuget</a></li>
+</ul>
+
+</article>
+<div id="comment">
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = "https://iometa.cn/2019/12/25/OpenGL 环境搭建与教程推荐/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ck4l0uya4000bd8j1qtfu3ftr"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://iometa.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

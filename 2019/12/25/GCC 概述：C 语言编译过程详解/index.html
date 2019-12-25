@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GCC 概述：C 语言编译过程详解 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>GCC 概述：C 语言编译过程详解</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC-概述"><span class="toc-text">GCC 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC-的安装"><span class="toc-text">GCC 的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC-编译程序的步骤"><span class="toc-text">GCC 编译程序的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC-常用参数"><span class="toc-text">GCC 常用参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+  <h2 id="GCC-概述"><a href="#GCC-概述" class="headerlink" title="GCC 概述"></a>GCC 概述</h2><ol>
+<li>对于 GCC 6.1 以及之后的版本，默认使用的 C++ 标准是 C++ 14；使用 -std=c++11 来指定使用哪一个标准</li>
+<li>将源代码编译为可执行程序的流程</li>
+</ol>
+<p><img src="https://i.loli.net/2019/11/15/Ci8uNg6fv9cOR3x.png" alt="image.png"></p>
+<ol start="3">
+<li>g++ 编译时使用 C++ 的标准库，而 gcc 默认使用 C 的标准库，g++ 等价于 gcc -xc++ -lstdc++ -shared-libgcc</li>
+<li>Linux 下可以使用 man gcc 命令查看帮助手册</li>
+</ol>
+<h2 id="GCC-的安装"><a href="#GCC-的安装" class="headerlink" title="GCC 的安装"></a>GCC 的安装</h2><ol>
+<li>Windows 下安装 MinGW 即可</li>
+<li>gcc version 7.4.0 (GCC)</li>
+</ol>
+<h2 id="GCC-编译程序的步骤"><a href="#GCC-编译程序的步骤" class="headerlink" title="GCC 编译程序的步骤"></a>GCC 编译程序的步骤</h2><ol>
+<li>预处理（pre-processing）：<code>cpp hello.c &gt; hello.i</code>，将引入的头文件（#include）和定义的宏（#define）扩展到代码中</li>
+<li>编译（compilation）：<code>gcc -S hello.i</code>，将预处理过的文件编译成汇编程序</li>
+<li>汇编（assembly）：<code>as -o hello.o hello.s</code>，将汇编程序转换成目标文件，二进制格式，每一个源文件都需要产生一个目标文件</li>
+<li>链接（linker）：<code>ld -o hello.exe hello.o ...libraries...</code>，将一个或多个目标文件连接成最终的可执行文件</li>
+</ol>
+<h2 id="GCC-常用参数"><a href="#GCC-常用参数" class="headerlink" title="GCC 常用参数"></a>GCC 常用参数</h2><ol>
+<li>–version 查看版本</li>
+<li>-v verbose（冗长的），输出编译的详细信息</li>
+<li>-std 指定标准</li>
+<li>-o 指定输出文件的名称</li>
+<li>-Wall 输出所有的警告信息</li>
+<li>-c 只将源文件编译为 object 文件（*.o），而不进行链接，之后可以使用 <code>gcc -o myprog.exe file1.o file2.o</code>将多个 object 文件连接成可执行文件</li>
+<li>-shared 编译为共享库（<em>.dll，</em>.so）</li>
+<li>-S 编译为汇编代码</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html" target="_blank" rel="noopener">GCC and Make: Compiling, Linking and Building</a></li>
+<li><a href="https://courses.cs.washington.edu/courses/cse451/99wi/Section/gccintro.html" target="_blank" rel="noopener">Quickie Intro to GCC</a></li>
+</ol>
+
+</article>
+<div id="comment">
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = "https://iometa.cn/2019/12/25/GCC 概述：C 语言编译过程详解/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ck4l0uy9r0002d8j1ot4hzkdc"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://iometa.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>
