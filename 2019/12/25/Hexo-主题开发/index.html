@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hexo 主题开发 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Hexo 主题开发</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EJS-语法简介"><span class="toc-text">EJS 语法简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首页文章列表的实现"><span class="toc-text">首页文章列表的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页的实现"><span class="toc-text">分页的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章目录的实现"><span class="toc-text">文章目录的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论区的实现"><span class="toc-text">评论区的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计数的实现"><span class="toc-text">计数的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试主题"><span class="toc-text">测试主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+  <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我们使用 Yeoman 生成主题模板，稍微提一下，Yeoman 是一个前端项目的脚手架工具，使用 <code>npm install yo -g</code> 安装 Yeoman，然后安装 <code>npm install generator-hexo-theme -g</code>，现在我们就可以使用 <code>yo hexo-theme</code> 生成主题模板。</p>
+<h2 id="EJS-语法简介"><a href="#EJS-语法简介" class="headerlink" title="EJS 语法简介"></a>EJS 语法简介</h2><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h2 id="首页文章列表的实现"><a href="#首页文章列表的实现" class="headerlink" title="首页文章列表的实现"></a>首页文章列表的实现</h2><h2 id="分页的实现"><a href="#分页的实现" class="headerlink" title="分页的实现"></a>分页的实现</h2><h2 id="文章目录的实现"><a href="#文章目录的实现" class="headerlink" title="文章目录的实现"></a>文章目录的实现</h2><h2 id="评论区的实现"><a href="#评论区的实现" class="headerlink" title="评论区的实现"></a>评论区的实现</h2><h2 id="计数的实现"><a href="#计数的实现" class="headerlink" title="计数的实现"></a>计数的实现</h2><h2 id="测试主题"><a href="#测试主题" class="headerlink" title="测试主题"></a>测试主题</h2><p><a href="https://github.com/hexojs/hexo-theme-unit-test.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-theme-unit-test.git</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://hexo.io/docs/variables.html" target="_blank" rel="noopener">https://hexo.io/docs/variables.html</a></li>
+<li><a href="https://www.cnblogs.com/yyhh/p/11058985.html" target="_blank" rel="noopener">https://www.cnblogs.com/yyhh/p/11058985.html</a></li>
+<li><a href="https://molunerfinn.com/make-a-hexo-theme/" target="_blank" rel="noopener">https://molunerfinn.com/make-a-hexo-theme/</a></li>
+<li><a href="https://juejin.im/entry/576d662b0a2b580058f9c5d5" target="_blank" rel="noopener">https://juejin.im/entry/576d662b0a2b580058f9c5d5</a></li>
+<li><a href="https://ejs.co/" target="_blank" rel="noopener">https://ejs.co/</a></li>
+</ol>
+
+  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/Hexo-主题开发/">https://iometa.cn/2019/12/25/Hexo-主题开发/</a></strong>  
+</p></article>
+
+<div id="comment">
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function() {
+        this.page.url = "https://iometa.cn/2019/12/25/Hexo-主题开发/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck4qbbrx000028kj1w0mlazhi"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+  
+      (function() {
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://iometa.disqus.com/embed.js";
+        s.setAttribute("data-timestamp", +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2019 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            PV: <span id="busuanzi_value_site_pv"></span>
+            UV: <span id="busuanzi_value_site_uv"></span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

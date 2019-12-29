@@ -308,3 +308,7 @@ article code {
     color: #bc9458;
     padding: .065em .4em;
 }
+
+article .copyright{
+    display: none;
+}
