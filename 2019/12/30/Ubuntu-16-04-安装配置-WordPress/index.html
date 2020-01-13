@@ -30,7 +30,7 @@
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>输入 <code>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf</code> 进行配置<br>运行远程访问，注释掉 bind-address = 127.0.0.1</p>
 <p>创建用户以及赋权<br>mysql -uroot -p</p>
 <p>CREATE USER ‘username‘@’%’ IDENTIFIED BY ‘password’;<br>GRANT ALL PRIVILEGES ON <em> . </em> TO ‘username‘@’%’;<br>FLUSH PRIVILEGES;</p>
-<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘song‘@’%’ WITH GRANT OPTION;</p>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘username‘@’%’ WITH GRANT OPTION;</p>
 <p><a href="https://www.cnblogs.com/cnblogsfans/archive/2009/09/21/1570942.html" target="_blank" rel="noopener">https://www.cnblogs.com/cnblogsfans/archive/2009/09/21/1570942.html</a></p>
 <p>CREATE DATABASE blog;<br>GRANT ALL PRIVILEGES ON blog.* TO “username”@”localhost” IDENTIFIED BY “password”;<br>FLUSH PRIVILEGES;</p>
 <h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p><a href="https://websiteforstudents.com/install-php-7-3-php-7-3-fpm-with-apache2-nginx-on-ubuntu-16-04-18-04-18-10/" target="_blank" rel="noopener">https://websiteforstudents.com/install-php-7-3-php-7-3-fpm-with-apache2-nginx-on-ubuntu-16-04-18-04-18-10/</a><br><a href="https://www.rosehosting.com/blog/how-to-install-php-7-3-on-ubuntu-16-04/" target="_blank" rel="noopener">https://www.rosehosting.com/blog/how-to-install-php-7-3-on-ubuntu-16-04/</a></p>
@@ -49,7 +49,7 @@
     <script>
       var disqus_config = function() {
         this.page.url = "https://iometa.cn/2019/12/30/Ubuntu-16-04-安装配置-WordPress/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck5ckxrxy000fz0j142k8fslx"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "ck5clprhr000gu8j1ptdkikpu"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
@@ -65,9 +65,10 @@
         </div>
       </div>
     </div>
-    <div id="footer" class="wrapper">
-      <div class="container">
-        
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
 <footer>
     <div>
@@ -81,6 +82,7 @@
     </div>
 </footer>
 
+        </div>
       </div>
     </div>
   </div>
