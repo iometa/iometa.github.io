@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hexo &amp; Typora 配置 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Hexo & Typora 配置</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-配置"><span class="toc-text">Hexo 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置文件"><span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行以下命令"><span class="toc-text">执行以下命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora-配置"><span class="toc-text">Typora 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图片路径配置"><span class="toc-text">图片路径配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-常用命令"><span class="toc-text">Hexo 常用命令</span></a></li></ol>
+  </div>
+  <h2 id="Hexo-配置"><a href="#Hexo-配置" class="headerlink" title="Hexo 配置"></a>Hexo 配置</h2><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><pre><code class="yml">post_asset_folder: true
+highlight:
+  enable: false
+theme: lightx
+deploy:
+  repository: https://github.com/songquanpeng/songquanpeng.github.io
+</code></pre>
+<h3 id="执行以下命令"><a href="#执行以下命令" class="headerlink" title="执行以下命令"></a>执行以下命令</h3><pre><code class="bash"># 解决图片路径问题
+npm install https://github.com/CodeFalling/hexo-asset-image --save
+
+# 下载主题
+git clone https://github.com/songquanpeng/hexo-theme-lightx.git source/lightx
+</code></pre>
+<h2 id="Typora-配置"><a href="#Typora-配置" class="headerlink" title="Typora 配置"></a>Typora 配置</h2><h3 id="图片路径配置"><a href="#图片路径配置" class="headerlink" title="图片路径配置"></a>图片路径配置</h3><p><img src="/2020/01/18/hexo-typora-configuration/1579342451202.png" alt="1579342451202"></p>
+<h2 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h2><pre><code class="bash">hexo new “post-name”
+hexo clean
+hexo g
+hexo s
+hexo d
+</code></pre>
+
+  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2020/01/18/hexo-typora-configuration/">https://iometa.cn/2020/01/18/hexo-typora-configuration/</a></strong>  
+</p></article>
+
+<div id="comment">
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function() {
+        this.page.url = "https://iometa.cn/2020/01/18/hexo-typora-configuration/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck5jrqyc800095cj1xxrmojgz"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+  
+      (function() {
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://iometa.disqus.com/embed.js";
+        s.setAttribute("data-timestamp", +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2020 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

@@ -2,86 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://iometa.cn/2019/12/30/Ubuntu-16-04-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-WordPress/</loc>
+    <loc>https://iometa.cn/2019/12/30/ubuntu-16.04-wordpress-installation/</loc>
     
-    <lastmod>2020-01-13T15:27:54.329Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2019/12/25/WebStorm%20%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    
-    <lastmod>2019-12-29T00:11:27.643Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.924Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iometa.cn/2019/12/25/Hexo-%E4%B8%BB%E9%A2%98%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://iometa.cn/2019/12/25/ubuntu-16.04-nginx-nodejs/</loc>
     
-    <lastmod>2019-12-25T08:44:40.937Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2019/12/25/Ubuntu%2016.04%20%E4%B8%8B%E9%85%8D%E7%BD%AE%20Nginx%E4%B8%8E%20Node.js%20%E4%BB%A5%E5%8F%8A%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2019-12-25T07:59:59.317Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.923Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iometa.cn/2019/12/25/OpenGL%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E6%95%99%E7%A8%8B%E6%8E%A8%E8%8D%90/</loc>
+    <loc>https://iometa.cn/2019/12/25/nginx-installation-tutorial/</loc>
     
-    <lastmod>2019-12-25T07:59:55.012Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2019/12/25/OpenGL%20glMatrixMode()%20%E5%87%BD%E6%95%B0%E8%A7%A3%E9%87%8A/</loc>
-    
-    <lastmod>2019-12-25T07:59:49.821Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iometa.cn/2019/12/25/Nginx%20%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://iometa.cn/2019/12/25/lightx-cms-introduction/</loc>
     
-    <lastmod>2019-12-25T07:59:45.827Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2019/12/25/LIGHTX-CMS%20%E2%80%94%E2%80%94%20%E5%9F%BA%E4%BA%8E%20Node.js%EF%BC%8CExpress.js%20%E4%BB%A5%E5%8F%8A%20SQLite%203%20%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2019-12-25T07:59:43.161Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.920Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iometa.cn/2019/12/25/LAN-SHARE%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://iometa.cn/2019/12/25/lan-share-introduction/</loc>
     
-    <lastmod>2019-12-25T07:59:38.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2019/12/25/Git%20%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E4%B8%8E%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-12-25T07:59:35.492Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.918Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://iometa.cn/2019/12/25/GCC%20%E6%A6%82%E8%BF%B0%EF%BC%9AC%20%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>https://iometa.cn/2019/12/25/jetbrain-ide/</loc>
     
-    <lastmod>2019-12-25T07:59:30.175Z</lastmod>
+    <lastmod>2020-01-18T12:12:31.917Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2020/01/18/hexo-typora-configuration/</loc>
+    
+    <lastmod>2020-01-18T12:12:31.915Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2019/12/25/hexo-theme-development/</loc>
+    
+    <lastmod>2020-01-18T12:12:31.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2019/12/25/git-configuration-tutorial/</loc>
+    
+    <lastmod>2020-01-18T12:12:31.912Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2019/12/25/gcc-introduction/</loc>
+    
+    <lastmod>2020-01-18T12:12:31.911Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://iometa.cn/about/index.html</loc>
     
-    <lastmod>2019-12-17T07:39:54.003Z</lastmod>
+    <lastmod>2020-01-18T10:01:19.019Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2019/12/25/opengl-installation-tutorial/</loc>
+    
+    <lastmod>2020-01-18T10:01:19.017Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2020/01/18/tensorflow-installation-tutorial/</loc>
+    
+    <lastmod>2020-01-18T10:01:19.017Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iometa.cn/2019/12/25/opengl-glmatrixmode-function/</loc>
+    
+    <lastmod>2020-01-18T10:01:19.016Z</lastmod>
     
   </url>
   

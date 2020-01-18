@@ -26,11 +26,11 @@
   <div class="contents">
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能"><span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录结构"><span class="toc-text">目录结构</span></a></li></ol>
   </div>
-  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LIGHTX-CMS 是我基于 Node.js，Express.js 以及 SQLite 3 搭建的个人博客发布系统。</p>
-<p>项目本身可以拿来部署个人博客网站，同时我认为其也适合用以新手学习 Node.js 的基本操作与特性。</p>
-<p><a href="https://github.com/songwonderful/lightx-cms" target="_blank" rel="noopener">项目地址</a><br><a href="https://iamazing.cn/" target="_blank" rel="noopener">查看在线演示</a>，由于服务器配置比较差，加载可能比较慢，请稍等片刻！</p>
+  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LIGHTX-CMS 是一款基于 Node.js，Express.js 以及 SQLite 3 搭建的个人博客发布系统。</p>
+<p>项目当前正在进行重构与大版本更新，请使用 <a href="https://github.com/songquanpeng/lightx-cms/releases" target="_blank" rel="noopener">Release 版本</a>！</p>
+<p>查看在线演示：<a href="https://iamazing.cn/" target="_blank" rel="noopener">https://iamazing.cn/</a></p>
 <h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>因为我们使用了嵌入式数据库 SQLite ，因此你无需配置数据库，你所要做的如下：</p>
-<pre><code class="shell">git clone https://github.com/songwonderful/lightx-cms.git
+<pre><code class="shell">git clone https://github.com/songquanpeng/lightx-cms.git
 cd lightx-cms
 npm i
 npm start
@@ -96,7 +96,7 @@ npm start
     └── user.ejs
 </code></pre>
   
-  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/LIGHTX-CMS —— 基于 Node.js，Express.js 以及 SQLite 3 搭建的个人博客系统/">https://iometa.cn/2019/12/25/LIGHTX-CMS —— 基于 Node.js，Express.js 以及 SQLite 3 搭建的个人博客系统/</a></strong>  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/lightx-cms-introduction/">https://iometa.cn/2019/12/25/lightx-cms-introduction/</a></strong>  
 </p></article>
 
 <div id="comment">
@@ -104,8 +104,8 @@ npm start
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function() {
-        this.page.url = "https://iometa.cn/2019/12/25/LIGHTX-CMS —— 基于 Node.js，Express.js 以及 SQLite 3 搭建的个人博客系统/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck5clprhe0006u8j1lnadkb22"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://iometa.cn/2019/12/25/lightx-cms-introduction/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck5jrqyc600085cj18cre4pkg"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
@@ -132,8 +132,7 @@ npm start
             © 2020 <a href="https://iometa.cn">JustSong</a>.
             Powered by <a href="https://hexo.io/">Hexo</a>.
             Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
-            PV: <span id="busuanzi_value_site_pv"></span>
-            UV: <span id="busuanzi_value_site_uv"></span>
+            
         </p>
     </div>
 </footer>
@@ -145,7 +144,7 @@ npm start
   
     <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
   
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
   <script>
     hljs.initHighlightingOnLoad();

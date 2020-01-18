@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jetbrain 系列 IDE 使用笔记 | JustSong</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css">
+  </head>
+  <body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">JustSong</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>Jetbrain 系列 IDE 使用笔记</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键"><span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊注释"><span class="toc-text">特殊注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#unresolved-function-or-method-无法解析的函数或方法"><span class="toc-text">unresolved function or method 无法解析的函数或方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题原因"><span class="toc-text">问题原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebStorm-不能识别-jQuery-的-符号"><span class="toc-text">WebStorm 不能识别 jQuery 的 $ 符号</span></a></li></ol></li></ol>
+  </div>
+  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>目前主要使用的 Jetbrain 系列 IDE 有：</p>
+<ol>
+<li>Web：WebStorm</li>
+<li>Python：PyCharm</li>
+<li>Java：IDEA</li>
+<li>Android：Android Studio</li>
+<li>Go：GoLand</li>
+</ol>
+<p>在校学生凭 edu 邮箱<a href="https://www.jetbrains.com/student/" target="_blank" rel="noopener">申请许可</a>。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>Ctrl + Alt + L ：整理代码</li>
+<li>Alt + Enter ：万能键</li>
+<li>Shift + Shift:  搜索</li>
+<li>Shift+Enter：另起一行</li>
+<li>Ctrl+Shift+Enter：向上另起一行</li>
+<li>Ctrl+J：插入常用代码</li>
+<li>Ctrl+Q：查询文档</li>
+<li>Ctrl+D：复制当前行</li>
+<li>Ctrl+R：替换</li>
+</ul>
+<h2 id="特殊注释"><a href="#特殊注释" class="headerlink" title="特殊注释"></a>特殊注释</h2><ul>
+<li>TODO</li>
+<li>FIXME</li>
+</ul>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="unresolved-function-or-method-无法解析的函数或方法"><a href="#unresolved-function-or-method-无法解析的函数或方法" class="headerlink" title="unresolved function or method 无法解析的函数或方法"></a>unresolved function or method 无法解析的函数或方法</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>使用某些库如 Express.js 时 WebStorm 无法识别某些函数</p>
+<h4 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h4><p>这些函数是在运行时动态添加的，WebStorm 不能通过静态分析解析这些函数</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>为 WebStorm 安装此库的 TypeScript 定义即可，方法是单击库的名字，按 Alt+Enter，然和选择安装 TypeScript 定义即可，如下图：<br><img src="https://i.loli.net/2019/10/06/MXmat6dcWuIo8Q1.png" alt="image.png"></p>
+<h3 id="WebStorm-不能识别-jQuery-的-符号"><a href="#WebStorm-不能识别-jQuery-的-符号" class="headerlink" title="WebStorm 不能识别 jQuery 的 $ 符号"></a>WebStorm 不能识别 jQuery 的 $ 符号</h3><blockquote>
+<ol>
+<li>First press CTRL + ALT + S and go to settings.</li>
+<li>Then click from the menu Languages &amp; Frameworks</li>
+<li>Select JavaScript from the section below and select Libraries</li>
+<li>In the open menu on the right, click on the Download button and select jquery from the list.</li>
+<li>Download it and apply. It is done.</li>
+</ol>
+</blockquote>
+<p>解决方法来自于: <a href="https://stackoverflow.com/questions/37038850/why-intellij-idea-doesnt-recognize-the-dollar-operator-of-jquery" target="_blank" rel="noopener">https://stackoverflow.com/questions/37038850/why-intellij-idea-doesnt-recognize-the-dollar-operator-of-jquery</a></p>
+
+  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/jetbrain-ide/">https://iometa.cn/2019/12/25/jetbrain-ide/</a></strong>  
+</p></article>
+
+<div id="comment">
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function() {
+        this.page.url = "https://iometa.cn/2019/12/25/jetbrain-ide/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck5jrqyc300065cj1h41u1roz"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+  
+      (function() {
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://iometa.disqus.com/embed.js";
+        s.setAttribute("data-timestamp", +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2020 <a href="https://iometa.cn">JustSong</a>.
+            Powered by <a href="https://hexo.io/">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

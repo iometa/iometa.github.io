@@ -24,29 +24,26 @@
             <article>
   <h1>LAN-SHARE 使用教程</h1>
   <div class="contents">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能-amp-亮点"><span class="toc-text">功能 &amp; 亮点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署教程"><span class="toc-text">部署教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本的配置"><span class="toc-text">基本的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署教程"><span class="toc-text">部署教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本的配置"><span class="toc-text">基本的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
   </div>
-  <p>LAN-Share 是一个基于 Node.js 的用于局域网内文件分享的工具，易于配置与部署。<br>项目地址：<a href="https://github.com/songquanpeng/lan-share" target="_blank" rel="noopener">https://github.com/songquanpeng/lan-share</a>，欢迎大家 Star！</p>
-<h2 id="功能-amp-亮点"><a href="#功能-amp-亮点" class="headerlink" title="功能 &amp; 亮点"></a>功能 &amp; 亮点</h2><ol>
-<li>首页文章自动根据浏览量和创建时间排序</li>
-<li>借助于 sm.ms 图床直接</li>
-</ol>
+  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LAN-Share 是一个基于 Node.js 的用于局域网内文件分享的工具，其简单，易于配置与部署。<br>项目地址：<a href="https://github.com/songquanpeng/lan-share" target="_blank" rel="noopener">https://github.com/songquanpeng/lan-share</a>。</p>
+<p><img src="/2019/12/25/lan-share-introduction/1579348014657.png" alt="桌面端截图"></p>
 <h2 id="部署教程"><a href="#部署教程" class="headerlink" title="部署教程"></a>部署教程</h2><ol>
 <li>第一步,我们需要安装 Node.js v10.14.2 或兼容的版本，请从<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网下载</a></li>
 <li>第二步，使用 Git 将<a href="https://github.com/songwonderful/lan-share" target="_blank" rel="noopener">项目</a> 克隆下来，或者<a href="https://github.com/songwonderful/lan-share.git" target="_blank" rel="noopener">直接下载</a></li>
 <li>第三步，解压缩，并打开此文件夹，按住 Shift 键然后单击鼠标右键，选择在此打开 Power Shell</li>
 <li>第四步，打开终端后，输入 <code>npm i</code> 安装依赖</li>
 <li>第五步，依赖安装完成后，输入 <code>npm start</code> 启动服务器</li>
-<li>现在打开<a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a> ，你就可以开始在局域网内分享文件了！</li>
+<li>浏览器打开 <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a> </li>
 </ol>
-<h2 id="基本的配置"><a href="#基本的配置" class="headerlink" title="基本的配置"></a>基本的配置</h2><p>打开位于项目根目录下的 <code>config.js</code>，在里面你可以配置端口号和 token，拥有 token 的用户可以删除文件。</p>
+<h2 id="基本的配置"><a href="#基本的配置" class="headerlink" title="基本的配置"></a>基本的配置</h2><p>打开位于项目根目录下的 <code>config.js</code>，在此处可以配置端口号和 token，拥有 token 的用户可以删除文件。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
 <li>用户上传的文件位于项目根目录下的 <code>/public/downloads/</code> 文件夹内</li>
-<li>Windows 下你可以使用 <code>ipconfig</code> 命令查询自己的 ip 地址</li>
+<li>Windows 下使用 <code>ipconfig</code> 命令查询本机 ip 地址，类 UNIX 系统下使用 <code>ifconfig</code></li>
 </ol>
 
   
-  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/LAN-SHARE 使用教程/">https://iometa.cn/2019/12/25/LAN-SHARE 使用教程/</a></strong>  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/lan-share-introduction/">https://iometa.cn/2019/12/25/lan-share-introduction/</a></strong>  
 </p></article>
 
 <div id="comment">
@@ -54,8 +51,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function() {
-        this.page.url = "https://iometa.cn/2019/12/25/LAN-SHARE 使用教程/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck5clprhc0005u8j1snsbriiu"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://iometa.cn/2019/12/25/lan-share-introduction/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck5jrqyc100055cj16ijfgc10"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
@@ -82,8 +79,7 @@
             © 2020 <a href="https://iometa.cn">JustSong</a>.
             Powered by <a href="https://hexo.io/">Hexo</a>.
             Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
-            PV: <span id="busuanzi_value_site_pv"></span>
-            UV: <span id="busuanzi_value_site_uv"></span>
+            
         </p>
     </div>
 </footer>
@@ -95,7 +91,7 @@
   
     <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
   
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
   <script>
     hljs.initHighlightingOnLoad();

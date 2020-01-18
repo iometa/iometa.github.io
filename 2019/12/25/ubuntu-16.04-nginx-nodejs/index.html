@@ -24,15 +24,16 @@
             <article>
   <h1>Ubuntu 16.04 下配置 Nginx 与 Node.js 以及服务的部署</h1>
   <div class="contents">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装nginx"><span class="toc-text">第一步：安装nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置nginx"><span class="toc-text">第二步：配置nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：安装npm和nodejs"><span class="toc-text">第三步：安装npm和nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：部署服务"><span class="toc-text">第四步：部署服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装-Nginx"><span class="toc-text">第一步：安装 Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置-Nginx"><span class="toc-text">第二步：配置 Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：安装-npm-和-Node-js"><span class="toc-text">第三步：安装 npm 和 Node.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：部署服务"><span class="toc-text">第四步：部署服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
   </div>
-  <h2 id="第一步：安装nginx"><a href="#第一步：安装nginx" class="headerlink" title="第一步：安装nginx"></a>第一步：安装nginx</h2><pre><code class="bash">sudo apt-get update
+  <h2 id="第一步：安装-Nginx"><a href="#第一步：安装-Nginx" class="headerlink" title="第一步：安装 Nginx"></a>第一步：安装 Nginx</h2><pre><code class="bash">sudo apt-get update
 sudo apt-get install nginx
 </code></pre>
 <p>如果遇到依赖问题，尝试执行<code>sudo apt-get -f install</code>命令</p>
-<h2 id="第二步：配置nginx"><a href="#第二步：配置nginx" class="headerlink" title="第二步：配置nginx"></a>第二步：配置nginx</h2><ol>
+<h2 id="第二步：配置-Nginx"><a href="#第二步：配置-Nginx" class="headerlink" title="第二步：配置 Nginx"></a>第二步：配置 Nginx</h2><ol>
 <li>首先备份原先的配置文件：<code>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup</code></li>
-<li>修改配置文件：<br> 如果你熟悉vi的使用：<ul>
+<li><p>修改配置文件：<br> 如果你熟悉vi的使用：</p>
+<ul>
 <li>使用vi打开配置文件：<code>/etc/nginx/sites-available/default</code></li>
 <li>修改其中的<code>location /</code>配置如下：<pre><code class="conf">  location / {
       proxy_pass http://localhost:3000;
@@ -60,7 +61,7 @@ sudo apt-get install nginx
 </code></pre></li>
 <li>重启nginx服务：<code>sudo service nginx restart</code></li>
 </ol>
-<h2 id="第三步：安装npm和nodejs"><a href="#第三步：安装npm和nodejs" class="headerlink" title="第三步：安装npm和nodejs"></a>第三步：安装npm和nodejs</h2><p>直接使用<code>sudo apt install</code>进行安装的话，版本比较低，因此这里在官网下载进行安装.</p>
+<h2 id="第三步：安装-npm-和-Node-js"><a href="#第三步：安装-npm-和-Node-js" class="headerlink" title="第三步：安装 npm 和 Node.js"></a>第三步：安装 npm 和 Node.js</h2><p>直接使用<code>sudo apt install</code>进行安装的话，版本比较低，因此这里在官网下载进行安装.</p>
 <ol>
 <li>使用wget进行下载：<code>wegt https://nodejs.org/dist/v12.1.0/node-v12.1.0-linux-x64.tar.xz</code></li>
 <li>解压缩：<code>tar xf node-v12.1.0-linux-x64.tar.xz</code></li>
@@ -95,7 +96,7 @@ nodejs -v : v10.15.3
 </ul>
 
   
-  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/Ubuntu 16.04 下配置 Nginx与 Node.js 以及服务的部署/">https://iometa.cn/2019/12/25/Ubuntu 16.04 下配置 Nginx与 Node.js 以及服务的部署/</a></strong>  
+  <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/ubuntu-16.04-nginx-nodejs/">https://iometa.cn/2019/12/25/ubuntu-16.04-nginx-nodejs/</a></strong>  
 </p></article>
 
 <div id="comment">
@@ -103,8 +104,8 @@ nodejs -v : v10.15.3
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function() {
-        this.page.url = "https://iometa.cn/2019/12/25/Ubuntu 16.04 下配置 Nginx与 Node.js 以及服务的部署/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck5clprhu000iu8j19s2qfz3b"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://iometa.cn/2019/12/25/ubuntu-16.04-nginx-nodejs/"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "ck5jrqycs000l5cj1j59tl4xz"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
@@ -131,8 +132,7 @@ nodejs -v : v10.15.3
             © 2020 <a href="https://iometa.cn">JustSong</a>.
             Powered by <a href="https://hexo.io/">Hexo</a>.
             Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
-            PV: <span id="busuanzi_value_site_pv"></span>
-            UV: <span id="busuanzi_value_site_uv"></span>
+            
         </p>
     </div>
 </footer>
@@ -144,7 +144,7 @@ nodejs -v : v10.15.3
   
     <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
   
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
   <script>
     hljs.initHighlightingOnLoad();
