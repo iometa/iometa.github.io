@@ -34,62 +34,131 @@
             <article>
   <h1>Git 配置与常用操作</h1>
   <div class="contents">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-安装配置"><span class="toc-text">Git 安装配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础用法"><span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销-add"><span class="toc-text">撤销 add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销-commit"><span class="toc-text">撤销 commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支"><span class="toc-text">分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个远程仓库"><span class="toc-text">多个远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-SSH-密钥对"><span class="toc-text">创建 SSH 密钥对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-同时-push-到两个远程分支"><span class="toc-text">Git 同时 push 到两个远程分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-分支管理"><span class="toc-text">Git 分支管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
   </div>
-  <h2 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h2><pre><code class="bash">git config --global user.name &quot;用户名&quot;
-git config --global user.email &quot;邮箱地址&quot;
+  <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><code>~/.gitconfig</code>：git 的全局配置文件</li>
+<li><code>.git/config</code>：git 的本地配置文件</li>
+<li><code>git config --global user.name &quot;Your Name&quot;</code></li>
+<li><code>git config --global user.email &quot;email@example.com&quot;</code></li>
+<li><code>git config --global color.ui true</code></li>
+<li><code>git config core.autocrlf true</code></li>
+</ol>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><code>git diff</code>：查看差异<br>-<code>HEAD -- filename</code>：查看工作区和版本库里面最新版本的区别</li>
+<li><code>git log</code>：查看日志<ul>
+<li><code>--abbrev-commit</code>：仅显示 SHA-1 的前几个字符</li>
+<li><code>--graph</code>：显示 ASCII 图形表示的分支合并历史</li>
+<li><code>--pretty=oneline</code>：一行显示，只显示哈希值和提交说明</li>
+</ul>
+</li>
+<li><code>git reset</code>：回退版本<ul>
+<li><code>--hard HEAD^</code>：回退到上个版本</li>
+<li><code>--hard HEAD^^</code>：回退到上上个版本</li>
+<li><code>--hard hash / tag</code>：回退到指定版本</li>
+<li><code>HEAD filename</code>：撤销暂存区的修改，重新放回工作区（已 add 但未 commit</li>
+</ul>
+</li>
+<li><code>git reflog</code>：查看历史命令</li>
+<li><code>git status</code>：查看状态</li>
+<li><code>git add</code>：把要提交的更改放到暂存区（stage）</li>
+<li><code>git commit</code>：把暂存区的所有更改提交到分支<ul>
+<li><code>-m</code>：本次提交的描述</li>
+</ul>
+</li>
+<li><code>git branch</code>：查看当前分支<ul>
+<li><code>branchname</code>：创建 branch</li>
+<li><code>-d branchname</code>：删除 branch</li>
+<li><code>-D branchname</code>：强制删除 branch（如果分支上有未合并的更改且我们确定要删除该分支时）</li>
+<li><code>--set-upstream-to=origin/dev dev</code>：指定本地 dev 分支与远程 origin/dev 分支的链接</li>
+</ul>
+</li>
+<li><code>git merge</code>：如果出现冲突，git 会将冲突的内容复制到当前分支上，且会有标记，删除或修改之后 git commit 即可<ul>
+<li><code>branchname</code>：将指定分支合并到当前分支</li>
+<li><code>--no-ff</code>：禁用 Fast forward，这样即使在删除分支后也会保留分支信息</li>
+</ul>
+</li>
+<li><code>git checkout</code>：<ul>
+<li><code>branchname</code>：切换 branch</li>
+<li><code>-- filename</code>：丢弃工作区中指定文件的修改（未 add 前）</li>
+<li><code>-b branchname</code>：创建并切换 branch<ul>
+<li><code>origin/dev</code>：创建远程 origin 的 dev 分支到本地</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>git switch</code>：（需要较新的版本）<ul>
+<li><code>-c branchname</code>：创建并切换 branch</li>
+<li><code>branchname</code>：切换到已有的分支</li>
+</ul>
+</li>
+<li><code>git rm</code>：将文件删除并将删除提交到暂存区（恢复的话需要两步，首先撤销暂存区操作 git reset HEAD filename，之后撤销工作区操作 git checkout – filename）<ul>
+<li><code>-r dirname</code>：删除文件夹</li>
+</ul>
+</li>
+<li><code>git push</code>: 将 commit 推送到远程仓库<ul>
+<li><code>-u origin master</code>：推送到 origin 的 master 分支上，并把本地的 master 分支和远程的 master 分支关联起来，用以简化以后的推送和拉取的命令</li>
+<li><code>origin branch</code>：推送到 origin 的 master 分支上</li>
+<li><code>origin tagname</code>：推送目标 tag 到远程</li>
+<li><code>--tags</code>：推送所有标签</li>
+</ul>
+</li>
+<li><code>git clone</code>：克隆 git 仓库，支持多种协议，默认的 git:// 使用 ssh 协议，使用 https 则第一次使用需要输入账号和密码</li>
+<li><code>git stash</code>：将当前工作区存储起来，之后可以恢复<ul>
+<li><code>list</code>：列出已存储的工作区</li>
+<li><code>apply</code>：恢复工作区<ul>
+<li><code>stash@{0}</code> ：指定要恢复的 stash</li>
+</ul>
+</li>
+<li><code>drop</code>：删除 stash 的内容</li>
+<li><code>pop</code>：恢复并删除 stash 的内容</li>
+</ul>
+</li>
+<li><code>git cherry-pick</code>：<ul>
+<li><code>hash / tag</code>：复制一个特定的 commit 到当前分支</li>
+</ul>
+</li>
+<li><code>git remote</code>：查看远程库的信息<ul>
+<li><code>-v</code>：显示更详细的远程库信息</li>
+</ul>
+</li>
+<li><code>git pull</code>：从远程对应分支拉取内容</li>
+<li><code>git rebase</code>：整理提交历史</li>
+<li><code>git tag</code>：查看所有标签<ul>
+<li><code>v0.0.0</code>：给当前最新提交的 commit 打上标签<ul>
+<li><code>hash</code>：给目标 commit 打上标签</li>
+<li><code>-m</code>：指定说明文字</li>
+</ul>
+</li>
+<li><code>-d v0.0.0</code>：删除标签</li>
+</ul>
+</li>
+<li><code>git show</code>：<ul>
+<li><code>tagname</code>：查看标签信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建-SSH-密钥对"><a href="#创建-SSH-密钥对" class="headerlink" title="创建 SSH 密钥对"></a>创建 SSH 密钥对</h2><p><code>ssh-keygen -t ras -C &quot;example@example.com&quot;</code><br>私钥位置：<code>~/.ssh/id_rsa</code><br>公钥位置：<code>~/.ssh/id_rsa.pub</code><br><a href="https://github.com/settings/keys" target="_blank" rel="noopener">github ssh keys</a><br><a href="https://gitee.com/profile/sshkeys" target="_blank" rel="noopener">gitee ssh keys</a></p>
+<h2 id="Git-同时-push-到两个远程分支"><a href="#Git-同时-push-到两个远程分支" class="headerlink" title="Git 同时 push 到两个远程分支"></a>Git 同时 push 到两个远程分支</h2><pre><code class="bash">git remote add origin url_one
+git remote set-url --add origin url_two
 </code></pre>
-<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><h2 id="撤销-add"><a href="#撤销-add" class="headerlink" title="撤销 add"></a>撤销 add</h2><h2 id="撤销-commit"><a href="#撤销-commit" class="headerlink" title="撤销 commit"></a>撤销 commit</h2><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h2 id="多个远程仓库"><a href="#多个远程仓库" class="headerlink" title="多个远程仓库"></a>多个远程仓库</h2><pre><code class="bash"># 配置身份
-# 创建代码仓库(首先要进入项目的根目录)
-git init
-# 添加文件(添加要提交的文件)
-git add filename # 添加单个文件
-git add . # 添加目录下的所有文件
-# 提交文件(提交代码到代码仓库)
-git commit -m &quot;commit message here&quot;
-# 查看修改的部分(代码提交后,本地又发生更改)
-git status # 显示被修改的文件
-git diff # 显示被修改的文件的具体被修改的内容
-# 显示历史提交信息
-git log
-# 撤销未添加文件的更改
-git checkout **/**/**.**
-# 取消添加文件
-git reset HEAD **/**/**.**
-# 回退到上一个版本
-git reset --hard HEAD
-git reset --hard HEAD^
-# 回退或恢复到指定版本
-git reset --hard version_number
-# 查询所有的历史版本更改信息
-git reflog
-# clone project
-git clone ***
-# tag a important version
-git tag -a v1.0 version_number
-# show tags
-git tag
-# add remote repository. Note: add a new repository on github first
-git remote add shortname git@github.com:github_username/project_name.git
-# config verification information
-ssh-keygen -t rsa -C &quot;Your github account email&quot;
-# test 
-ssh -T git@github.com
-# view the remote library
-git remote -v
-# fetch changes from remote library
-git fetch
-# merge changes
-git merge
-# 将本地更改推送到远程服务器上
-git push
-# some basic setting 
-git branch --set-upstream-to=origin/master master
+<p>验证：<code>git remote -v</code><br>单独 push 其中一个 remote：git push <a href="mailto:git@domain.com" target="_blank" rel="noopener">git@domain.com</a>:username/project<br><a href="https://gist.github.com/bjmiller121/f93cd974ff709d2b968f" target="_blank" rel="noopener">https://gist.github.com/bjmiller121/f93cd974ff709d2b968f</a><br><a href="https://www.jianshu.com/p/dee791260538" target="_blank" rel="noopener">https://www.jianshu.com/p/dee791260538</a></p>
+<p>以上为一个 remote 有两个 url 的情况，以下为两个 remote 的情况：</p>
+<pre><code class="bash">git remote add github git@github.com:username/project
+git remote add gitee git@gitee.com:username/project
+git push github master
+git push gitee master
 </code></pre>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<h2 id="Git-分支管理"><a href="#Git-分支管理" class="headerlink" title="Git 分支管理"></a>Git 分支管理</h2><ol>
+<li>master 分支仅用来发布新版本</li>
+<li>dev 分支上平常提交代码</li>
+<li>每个人有自己的一个分支，平时往 dev 分支上合并</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></li>
 <li><a href="http://www.runoob.com/w3cnote/android-tutorial-git-repo-operate.html" target="_blank" rel="noopener">http://www.runoob.com/w3cnote/android-tutorial-git-repo-operate.html</a></li>
 <li><a href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/</a></li>
-</ul>
+</ol>
 
   
   <p class="copyright"><strong>Links: <a href="https://iometa.cn/2019/12/25/git-configuration-tutorial/">https://iometa.cn/2019/12/25/git-configuration-tutorial/</a></strong>  
@@ -101,7 +170,7 @@ git branch --set-upstream-to=origin/master master
     <script>
       var disqus_config = function() {
         this.page.url = "https://iometa.cn/2019/12/25/git-configuration-tutorial/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck6lp9vqm0001bwgjwjfsap68"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "ck6nhnk2p0000ssgjfs6h2i5w"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
