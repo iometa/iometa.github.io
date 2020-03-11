@@ -7,6 +7,9 @@
     <title>Hexo 主题开发 | JustSong</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
     <link rel="stylesheet" href="/lightx.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
     <script>
@@ -19,6 +22,19 @@
     
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   <div id="page-container">
     <div id="content-wrap">
       <div class="wrapper">
@@ -138,7 +154,7 @@ UV: &lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;
     <script>
       var disqus_config = function() {
         this.page.url = "https://iometa.cn/2019/12/25/hexo-theme-development/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck7lp0rzg0006l8gjqsan6b9l"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "ck7mzt6pu0004q4gjoj9kcn4g"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {

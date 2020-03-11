@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iometa.cn/2020/01/18/tensorflow-installation-tutorial/</loc>
+    
+    <lastmod>2020-03-11T07:17:47.551Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iometa.cn/2020/01/16/opengl-2d-graphic-tutorial/</loc>
     
     <lastmod>2020-02-15T10:59:01.855Z</lastmod>
@@ -87,13 +94,6 @@
   
   <url>
     <loc>https://iometa.cn/2019/12/25/opengl-installation-tutorial/</loc>
-    
-    <lastmod>2020-01-18T10:01:19.017Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iometa.cn/2020/01/18/tensorflow-installation-tutorial/</loc>
     
     <lastmod>2020-01-18T10:01:19.017Z</lastmod>
     

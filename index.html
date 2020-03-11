@@ -7,6 +7,9 @@
     <title>Practice makes perfect. | JustSong</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
     <link rel="stylesheet" href="/lightx.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
     <script>
@@ -19,6 +22,19 @@
     
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   <div id="page-container">
     <div id="content-wrap">
       <div class="wrapper">
@@ -48,7 +64,7 @@
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-18</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/18/hexo-typora-configuration/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rze0004l8gjx65e6q5t">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6py0009q4gjhc80kl99">0 Comments</span>
           </span>        
         
       </div>
@@ -79,7 +95,7 @@ deploy:
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-18</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/18/tensorflow-installation-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzo000fl8gjgzbvrtd4">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q1000dq4gjmfmk5a9i">0 Comments</span>
           </span>        
         
       </div>
@@ -108,7 +124,7 @@ deploy:
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-16</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/16/opengl-2d-graphic-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0s140020l8gjh3h4pj9c">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6r10020q4gjit7h1i9z">0 Comments</span>
           </span>        
         
       </div>
@@ -140,7 +156,7 @@ deploy:
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-30</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/30/ubuntu-16.04-wordpress-installation/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzs000ll8gjb595k7q4">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q6000lq4gjztqu9n3e">0 Comments</span>
           </span>        
         
       </div>
@@ -168,7 +184,7 @@ How To Install MySQL on Ubuntu 16. ...
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/hexo-theme-development/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzg0006l8gjqsan6b9l">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pu0004q4gjoj9kcn4g">0 Comments</span>
           </span>        
         
       </div>
@@ -190,7 +206,7 @@ How To Install MySQL on Ubuntu 16. ...
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/gcc-introduction/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rz70000l8gjngl97j6n">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pn0000q4gj3j0p8q08">0 Comments</span>
           </span>        
         
       </div>
@@ -220,7 +236,7 @@ g++ 编译时使用 C++ 的标准库，而 gcc 默认使用 C 的标准库，g++
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/git-configuration-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzc0002l8gj2eg18cz1">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pr0002q4gjbry54j2o">0 Comments</span>
           </span>        
         
       </div>
@@ -231,6 +247,33 @@ g++ 编译时使用 C++ 的标准库，而 gcc 默认使用 C 的标准库，g++
 .git/config：git 的本地配置文件
 git config --global user.name &quot;Your Name&quot;
 git config --global user.email &quot;email ...
+        
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='/2019/12/25/lan-share-introduction/'">
+      <div class="card-title">
+        LAN-SHARE 使用教程
+      </div>
+      <div class="card-tag">
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/tags/个人项目'">个人项目</span>
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/tags/教程'">教程</span>
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
+        
+          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/lan-share-introduction/#comment'">
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pv0005q4gjfbiadt3c">0 Comments</span>
+          </span>        
+        
+      </div>
+      <div class="card-text">
+        
+          概述LAN-Share 是一个基于 Node.js 的用于局域网内文件分享的工具，其简单，易于配置与部署。项目地址：https://github.com/songquanpeng/lan-share。
+
+部署教程
+第一步,我们需要安装 Node.js v10.14.2 或兼容的版本，请从官网 ...
         
       </div>
     </div>
@@ -248,7 +291,7 @@ git config --global user.email &quot;email ...
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/jetbrain-ide/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzf0005l8gjr939xq88">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pw0006q4gj51jwy7ta">0 Comments</span>
           </span>        
         
       </div>
@@ -270,33 +313,6 @@ A ...
       </div>
     </div>
 
-    <div class="card" onclick="location.href='/2019/12/25/lan-share-introduction/'">
-      <div class="card-title">
-        LAN-SHARE 使用教程
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/个人项目'">个人项目</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/教程'">教程</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/lan-share-introduction/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzi0009l8gjybz8xgt0">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          概述LAN-Share 是一个基于 Node.js 的用于局域网内文件分享的工具，其简单，易于配置与部署。项目地址：https://github.com/songquanpeng/lan-share。
-
-部署教程
-第一步,我们需要安装 Node.js v10.14.2 或兼容的版本，请从官网 ...
-        
-      </div>
-    </div>
-
     <div class="card" onclick="location.href='/2019/12/25/lightx-cms-introduction/'">
       <div class="card-title">
         LIGHTX-CMS —— 基于 Node.js，Express.js 以及 SQLite 3 搭建个人博客
@@ -310,7 +326,7 @@ A ...
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/lightx-cms-introduction/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzj000al8gjpzjf3otd">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6pz000aq4gj3qokllap">0 Comments</span>
           </span>        
         
       </div>

@@ -7,6 +7,9 @@
     <title>Tensorflow 环境搭建 | JustSong</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
     <link rel="stylesheet" href="/lightx.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
     <script>
@@ -19,6 +22,19 @@
     
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   <div id="page-container">
     <div id="content-wrap">
       <div class="wrapper">
@@ -59,7 +75,7 @@ C:\Users\Song&gt;activate tensorflow
 (tensorflow) C:\Users\Song&gt;pip install tensorflow
 Collecting tensorflow
 </code></pre>
-<h2 id="验证安装是否成功"><a href="#验证安装是否成功" class="headerlink" title="验证安装是否成功"></a>验证安装是否成功</h2><p><code>python -c &quot;import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))&quot;</code></p>
+<h2 id="验证安装是否成功"><a href="#验证安装是否成功" class="headerlink" title="验证安装是否成功"></a>验证安装是否成功</h2><p>注意为了使环境变量生效，需要打开新的终端。<br><code>python -c &quot;import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))&quot;</code></p>
 <p>从输出中我们可以发现 tensorflow 已经识别出了 GPU：</p>
 <pre><code>(tensorflow) C:\Users\Song&gt;python -c &quot;import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))&quot;
 2020-01-18 16:49:37.235829: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic                                 library cudart64_101.dll81: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor
@@ -102,7 +118,7 @@ tf.Tensor(3203.9128, shape=(), dtype=float32)
     <script>
       var disqus_config = function() {
         this.page.url = "https://iometa.cn/2020/01/18/tensorflow-installation-tutorial/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck7lp0rzo000fl8gjgzbvrtd4"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "ck7mzt6q1000dq4gjmfmk5a9i"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {

@@ -7,6 +7,9 @@
     <title>Practice makes perfect. | JustSong</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
     <link rel="stylesheet" href="/lightx.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
     <script>
@@ -19,6 +22,19 @@
     
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   <div id="page-container">
     <div id="content-wrap">
       <div class="wrapper">
@@ -50,7 +66,7 @@
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/nginx-installation-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzk000cl8gjg3haqwb0">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q0000cq4gjk8gm5ym8">0 Comments</span>
           </span>        
         
       </div>
@@ -61,32 +77,6 @@ sudo apt-get install nginx
 
 如果遇到依赖问题，尝试执行 sudo apt-get -f install 命令进行修复
 SSL 证书申请我们需要为我们的域名以及子域名分别申请 SSL 证书 ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/opengl-installation-tutorial/'">
-      <div class="card-title">
-        OpenGL 环境搭建与教程推荐
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/OpenGL'">OpenGL</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/opengl-installation-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzl000dl8gjgcew0r15">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          OpenGL 概述摘自 Wikipedia：
-
-Open Graphics Library (OpenGL) is a cross-language, cross-platform application programming interface (API) for rendering 2 ...
         
       </div>
     </div>
@@ -102,7 +92,7 @@ Open Graphics Library (OpenGL) is a cross-language, cross-platform application p
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/opengl-glmatrixmode-function/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzp000hl8gj1ryhwykk">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q3000fq4gjzfsedn0r">0 Comments</span>
           </span>        
         
       </div>
@@ -133,7 +123,7 @@ Open Graphics Library (OpenGL) is a cross-language, cross-platform application p
         <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
         
           <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/ubuntu-16.04-nginx-nodejs/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck7lp0rzq000kl8gjvwmh58ib">0 Comments</span>
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q4000hq4gjas7yx5bl">0 Comments</span>
           </span>        
         
       </div>
@@ -145,6 +135,32 @@ sudo apt-get install nginx
 如果遇到依赖问题，尝试执行sudo apt-get -f install命令
 第二步：配置 Nginx
 首先备份原先的配置文件：sudo cp /etc/nginx/sit ...
+        
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='/2019/12/25/opengl-installation-tutorial/'">
+      <div class="card-title">
+        OpenGL 环境搭建与教程推荐
+      </div>
+      <div class="card-tag">
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/tags/OpenGL'">OpenGL</span>
+        
+        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
+        
+          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/opengl-installation-tutorial/#comment'">
+            <span class="disqus-comment-count" data-disqus-identifier="ck7mzt6q5000kq4gjphmclh8e">0 Comments</span>
+          </span>        
+        
+      </div>
+      <div class="card-text">
+        
+          OpenGL 概述摘自 Wikipedia：
+
+Open Graphics Library (OpenGL) is a cross-language, cross-platform application programming interface (API) for rendering 2 ...
         
       </div>
     </div>

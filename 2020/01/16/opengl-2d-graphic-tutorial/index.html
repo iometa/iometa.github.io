@@ -7,6 +7,9 @@
     <title>OpenGL 教程：二维图形绘制 | JustSong</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
     <link rel="stylesheet" href="/lightx.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
     <script>
@@ -19,6 +22,19 @@
     
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   <div id="page-container">
     <div id="content-wrap">
       <div class="wrapper">
@@ -1637,7 +1653,7 @@ int main(int argc, char** argv) {
     <script>
       var disqus_config = function() {
         this.page.url = "https://iometa.cn/2020/01/16/opengl-2d-graphic-tutorial/"; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "ck7lp0s140020l8gjh3h4pj9c"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "ck7mzt6r10020q4gjit7h1i9z"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
   
       (function() {
