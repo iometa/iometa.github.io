@@ -1,391 +1,211 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Practice makes perfect. | JustSong</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
-    <link rel="stylesheet" href="/lightx.css">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/icon512.png">
-    <meta name="theme-color" content="#ffffff">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141101198-4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <title>JustSong</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+      }
+      #floatingCirclesG{
+        position:relative;
+        width:125px;
+        height:125px;
+        margin:auto;
+        transform:scale(0.6);
+          -o-transform:scale(0.6);
+          -ms-transform:scale(0.6);
+          -webkit-transform:scale(0.6);
+          -moz-transform:scale(0.6);
+      }
 
-      gtag('config', 'UA-141101198-4');
-    </script>
-    
+      .f_circleG{
+        position:absolute;
+        background-color:rgb(255,255,255);
+        height:22px;
+        width:22px;
+        border-radius:12px;
+          -o-border-radius:12px;
+          -ms-border-radius:12px;
+          -webkit-border-radius:12px;
+          -moz-border-radius:12px;
+        animation-name:f_fadeG;
+          -o-animation-name:f_fadeG;
+          -ms-animation-name:f_fadeG;
+          -webkit-animation-name:f_fadeG;
+          -moz-animation-name:f_fadeG;
+        animation-duration:1.2s;
+          -o-animation-duration:1.2s;
+          -ms-animation-duration:1.2s;
+          -webkit-animation-duration:1.2s;
+          -moz-animation-duration:1.2s;
+        animation-iteration-count:infinite;
+          -o-animation-iteration-count:infinite;
+          -ms-animation-iteration-count:infinite;
+          -webkit-animation-iteration-count:infinite;
+          -moz-animation-iteration-count:infinite;
+        animation-direction:normal;
+          -o-animation-direction:normal;
+          -ms-animation-direction:normal;
+          -webkit-animation-direction:normal;
+          -moz-animation-direction:normal;
+      }
+
+      #frotateG_01{
+        left:0;
+        top:51px;
+        animation-delay:0.45s;
+          -o-animation-delay:0.45s;
+          -ms-animation-delay:0.45s;
+          -webkit-animation-delay:0.45s;
+          -moz-animation-delay:0.45s;
+      }
+
+      #frotateG_02{
+        left:15px;
+        top:15px;
+        animation-delay:0.6s;
+          -o-animation-delay:0.6s;
+          -ms-animation-delay:0.6s;
+          -webkit-animation-delay:0.6s;
+          -moz-animation-delay:0.6s;
+      }
+
+      #frotateG_03{
+        left:51px;
+        top:0;
+        animation-delay:0.75s;
+          -o-animation-delay:0.75s;
+          -ms-animation-delay:0.75s;
+          -webkit-animation-delay:0.75s;
+          -moz-animation-delay:0.75s;
+      }
+
+      #frotateG_04{
+        right:15px;
+        top:15px;
+        animation-delay:0.9s;
+          -o-animation-delay:0.9s;
+          -ms-animation-delay:0.9s;
+          -webkit-animation-delay:0.9s;
+          -moz-animation-delay:0.9s;
+      }
+
+      #frotateG_05{
+        right:0;
+        top:51px;
+        animation-delay:1.05s;
+          -o-animation-delay:1.05s;
+          -ms-animation-delay:1.05s;
+          -webkit-animation-delay:1.05s;
+          -moz-animation-delay:1.05s;
+      }
+
+      #frotateG_06{
+        right:15px;
+        bottom:15px;
+        animation-delay:1.2s;
+          -o-animation-delay:1.2s;
+          -ms-animation-delay:1.2s;
+          -webkit-animation-delay:1.2s;
+          -moz-animation-delay:1.2s;
+      }
+
+      #frotateG_07{
+        left:51px;
+        bottom:0;
+        animation-delay:1.35s;
+          -o-animation-delay:1.35s;
+          -ms-animation-delay:1.35s;
+          -webkit-animation-delay:1.35s;
+          -moz-animation-delay:1.35s;
+      }
+
+      #frotateG_08{
+        left:15px;
+        bottom:15px;
+        animation-delay:1.5s;
+          -o-animation-delay:1.5s;
+          -ms-animation-delay:1.5s;
+          -webkit-animation-delay:1.5s;
+          -moz-animation-delay:1.5s;
+      }
+
+
+
+      @keyframes f_fadeG{
+        0%{
+          background-color:rgb(0,0,0);
+        }
+
+        100%{
+          background-color:rgb(255,255,255);
+        }
+      }
+
+      @-o-keyframes f_fadeG{
+        0%{
+          background-color:rgb(0,0,0);
+        }
+
+        100%{
+          background-color:rgb(255,255,255);
+        }
+      }
+
+      @-ms-keyframes f_fadeG{
+        0%{
+          background-color:rgb(0,0,0);
+        }
+
+        100%{
+          background-color:rgb(255,255,255);
+        }
+      }
+
+      @-webkit-keyframes f_fadeG{
+        0%{
+          background-color:rgb(0,0,0);
+        }
+
+        100%{
+          background-color:rgb(255,255,255);
+        }
+      }
+
+      @-moz-keyframes f_fadeG{
+        0%{
+          background-color:rgb(0,0,0);
+        }
+
+        100%{
+          background-color:rgb(255,255,255);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="floatingCirclesG" class="inner">
+      <div class="f_circleG" id="frotateG_01"></div>
+      <div class="f_circleG" id="frotateG_02"></div>
+      <div class="f_circleG" id="frotateG_03"></div>
+      <div class="f_circleG" id="frotateG_04"></div>
+      <div class="f_circleG" id="frotateG_05"></div>
+      <div class="f_circleG" id="frotateG_06"></div>
+      <div class="f_circleG" id="frotateG_07"></div>
+      <div class="f_circleG" id="frotateG_08"></div>
+    </div>
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js', {scope: '/'})
-            .then(function (registration) {
-              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            })
-            .catch(function (err) {
-              console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-      }
+      window.location.replace("https://iamazing.cn") 
     </script>
-  <div id="page-container">
-    <div id="content-wrap">
-      <div class="wrapper">
-        <div class="container">
-            <nav>
-    <ul>
-      <li><a href="/">JustSong</a></li>
-      <li><a href="/archives">Archives</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-</nav>
-
-            
-    
-    <div class="card" onclick="location.href='/2020/01/18/hexo-typora-configuration/'">
-      <div class="card-title">
-        Hexo &amp; Typora 配置
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Hexo'">Hexo</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Typora'">Typora</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-18</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/18/hexo-typora-configuration/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsit0002lkgje76xezx6">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          Hexo 配置修改配置文件post_asset_folder: true
-highlight:
-  enable: false
-theme: lightx
-deploy:
-  repository: https://github.com/songquanpeng/songquanpeng.g ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2020/01/18/tensorflow-installation-tutorial/'">
-      <div class="card-title">
-        Tensorflow 环境搭建
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Tensorflow'">Tensorflow</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/深度学习'">深度学习</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-18</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/18/tensorflow-installation-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsj7000hlkgj9eqv72kc">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          概述本文的目的是指导读者在 Windows 10 系统上安装 tensorflow 2.1.0。
-成功安装的关键在于一定要下载正确的软件版本，此处涉及到操作系统版本，python 版本，pip 版本，CUDA 版本，显卡驱动版本，cuDNN 版本，tensorflow 版本。
-前提条件
-操作 ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2020/01/16/opengl-2d-graphic-tutorial/'">
-      <div class="card-title">
-        OpenGL 教程：二维图形绘制
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/教程'">教程</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/OpenGL'">OpenGL</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/翻译'">翻译</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2020/01'">2020-01-16</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2020/01/16/opengl-2d-graphic-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslskf0020lkgjmyp1c7sn">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          1. 搭建 OpenGL 环境取决于你的编程平台，有以下教程：
-
-基于 C++
-基于 Java：JOGL 或者 LWJGL
-安卓平台
-
-1.1 例子 1：设置 OpenGL 与 GLUT（GL01Hello.cpp）确保你能够运行以下程序：
-/*
- * GL01Hello.cpp: Test ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/30/ubuntu-16.04-wordpress-installation/'">
-      <div class="card-title">
-        安装配置 WordPress
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Linux'">Linux</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Wordpress'">Wordpress</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-30</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/30/ubuntu-16.04-wordpress-installation/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsja000klkgjh6x1v9jy">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          概述Wordpress 需要我们首先安装配置好 MySQL，Nginx 以及 PHP。
-安装与配置 MySQL安装sudo apt-get update
-sudo apt-get install mysql-server
-
-How To Install MySQL on Ubuntu 16. ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/hexo-theme-development/'">
-      <div class="card-title">
-        Hexo 主题开发
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Hexo'">Hexo</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/个人项目'">个人项目</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/hexo-theme-development/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsiy0005lkgjjpm9nm68">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          准备工作首先我们使用 Yeoman 生成主题模板，稍微提一下，Yeoman 是一个前端项目的脚手架工具，使用 npm install yo -g 安装 Yeoman，然后执行 npm install generator-hexo-theme -g，之后我们就可以使用 yo hexo-them ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/git-configuration-tutorial/'">
-      <div class="card-title">
-        Git 配置与常用操作
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Git'">Git</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/git-configuration-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsip0000lkgj76dpzzew">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          配置
-~/.gitconfig：git 的全局配置文件
-.git/config：git 的本地配置文件
-git config --global user.name &quot;Your Name&quot;
-git config --global user.email &quot;email ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/gcc-introduction/'">
-      <div class="card-title">
-        GCC 概述：C 语言编译过程详解
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/C'">C</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/gcc-introduction/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsiw0004lkgjbzr57sdd">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          GCC 概述
-对于 GCC 6.1 以及之后的版本，默认使用的 C++ 标准是 C++ 14；使用 -std=c++11 来指定使用哪一个标准
-将源代码编译为可执行程序的流程
-
-
-
-g++ 编译时使用 C++ 的标准库，而 gcc 默认使用 C 的标准库，g++ 等价于 gcc -xc++  ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/jetbrain-ide/'">
-      <div class="card-title">
-        Jetbrain 系列 IDE 使用笔记
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/工具'">工具</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/jetbrain-ide/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsiy0006lkgj1exzk8ga">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          概述目前主要使用的 Jetbrain 系列 IDE 有：
-
-Web：WebStorm
-Python：PyCharm
-Java：IDEA
-Android：Android Studio
-Go：GoLand
-
-在校学生凭 edu 邮箱申请许可。
-快捷键
-Ctrl + Alt + L ：整理代码
-A ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/nginx-installation-tutorial/'">
-      <div class="card-title">
-        Nginx 安装与配置教程
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/配置'">配置</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Nginx'">Nginx</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Linux'">Linux</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/Windows'">Windows</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/nginx-installation-tutorial/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsj00008lkgjxpqtaclp">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          Nginx 在 Ubuntu 下的安装sudo apt-get update
-sudo apt-get install nginx
-
-如果遇到依赖问题，尝试执行 sudo apt-get -f install 命令进行修复
-SSL 证书申请我们需要为我们的域名以及子域名分别申请 SSL 证书 ...
-        
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='/2019/12/25/lan-share-introduction/'">
-      <div class="card-title">
-        LAN-SHARE 使用教程
-      </div>
-      <div class="card-tag">
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/个人项目'">个人项目</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/tags/教程'">教程</span>
-        
-        <span class="badge" onclick="event.stopPropagation();location.href='/archives/2019/12'">2019-12-25</span>
-        
-          <span class="badge" onclick="event.stopPropagation();location.href='/2019/12/25/lan-share-introduction/#comment'">
-            <span class="disqus-comment-count" data-disqus-identifier="ck8zslsj10009lkgjipjk7xrp">0 Comments</span>
-          </span>        
-        
-      </div>
-      <div class="card-text">
-        
-          概述LAN-Share 是一个基于 Node.js 的用于局域网内文件分享的工具，其简单，易于配置与部署。项目地址：https://github.com/songquanpeng/lan-share。
-
-部署教程
-第一步,我们需要安装 Node.js v10.14.2 或兼容的版本，请从官网 ...
-        
-      </div>
-    </div>
- 
-
-<div class="paginator">
-    
-        <div class="prev" style="visibility: hidden;">PREV</div>
-    
-    
-    
-        <div class="next" onclick="location.href='/page/2/'">NEXT</div>
-    
-</div>
-
-        </div>
-      </div>
-    </div>
-    <div id="footer">
-      <div class="wrapper">
-        <div class="container">
-          
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
-<footer>
-    <div>
-        <p>
-            © 2020 <a href="https://iometa.cn">JustSong</a>.
-            Powered by <a href="https://hexo.io/">Hexo</a>.
-            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx">lightx</a>.
-            
-        </p>
-    </div>
-</footer>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  
-    <script id="dsq-count-scr" src="//iometa.disqus.com/count.js" async></script>
-  
-  
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-  </script>
   </body>
 </html>
